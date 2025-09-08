@@ -1,3 +1,9 @@
+# /*
+# @Course: CS_119 #27624S
+# @author: Jacob Yeung #900494756
+# @Date: 20250416
+# @version Lab02- A: Exercise02_03
+# */
 print('Hello World')
 print("Hello World")
 print("Don't fear!")
@@ -33,7 +39,22 @@ print('One', 'Two', 'Three', sep='=') #One=Two=Three
 temperature = 45
 print(f'It is currently {temperature} degrees.')
 #print(f'name="{name}"\nsurname="{surname}"\nage={age}')
-print(f"{temperature:.1f}")
+print(f"{temperature:,.1f}")
 #print(f": {amount1:8.2f}{amount2:10.1f}")
 #print(f"{str1:<12}-{str2:^10}{str3:>12}")
 #000000000000-0000000000-000000000000
+
+# /*
+# Sample Run:
+# Input: 14.5
+# output:
+# JDK18>javac Exercise02_03.java
+# Compiled successful
+#
+# JDK18>java Exercise02_03
+# Enter a value for feet: 14.5
+# 14.5 feet is 4.4225 meters
+#
+# JDK18>
+# Automatic Check: Pass
+# */
