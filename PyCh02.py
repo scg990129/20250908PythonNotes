@@ -1,8 +1,8 @@
 # /*
-# @Course: CS_119 #27624S
+# @Course: CS_119 #15492
 # @author: Jacob Yeung #900494756
-# @Date: 20250416
-# @version Lab02- A: Exercise02_03
+# @Date: 20250910
+# @version Lab02 - Question A
 # */
 print('Hello World')
 print("Hello World")
@@ -16,6 +16,7 @@ Three""")
 #One
 #Two
 #Three
+#x, y, z = 9, 8, 7 #
 first_name = input('Enter your first name: ')
 last_name = input('Enter your last name: ')
 print('Hello', first_name, last_name)
@@ -45,6 +46,7 @@ print(f"{temperature:,.1f}")
 #000000000000-0000000000-000000000000
 
 # /*
+#Test Case for ???
 # Sample Run:
 # Input: 14.5
 # output:
