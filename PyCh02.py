@@ -44,6 +44,7 @@ print(f"{temperature:,.1f}")
 #print(f": {amount1:8.2f}{amount2:10.1f}")
 #print(f"{str1:<12}-{str2:^10}{str3:>12}")
 #000000000000-0000000000-000000000000
+#print(f"{str1:<12}\t{str3:>12}")
 
 # /*
 #Test Case for ???
