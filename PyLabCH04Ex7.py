@@ -44,3 +44,10 @@ dollar = totalPayInPennies // 100
 cents = totalPayInPennies % 100
 print(f"\n** Overall, the total salary for {totalDays} {'day' if totalDays == 1 else 'days'} is ${totalPayInPennies / 100:,.2f},")
 print(f"which is {'' if dollar == 0 else f'{dollar} dollar' if dollar == 1 else f'{dollar} dollars'}{' and ' if dollar > 0 and cents > 0 else ''}{'' if cents == 0 else f'{cents} cent' if cents == 1 else f'{cents} cents'}.")
+
+
+# Test Case 1:
+"""Enter a number within the range of 1 through 10: 1
+The Roman numeral version of that number '1' is 'I'
+
+...Program finished with exit code 0"""
