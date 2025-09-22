@@ -16,7 +16,7 @@ while True:
     totalDays = int(input("Enter the number of days: "))
     if totalDays >= 0:
         break
-    else:
+    else: #Need to check the input value is correct, otherwise an error message is displayed. (3 points)
         print(f"Error: The number of days must be a positive or zero integer (Your input: {totalDays}), \nPlease try again.")
 
 totalPayInPennies = 0
@@ -34,9 +34,13 @@ if totalDays == 0:
     message = f"${MaxPayInPennies / 100:,.2f}"
     print(f"{0:>{lenDays}}\t\t{message:>{lenPay}}")
 else:
-    for day in range(1, totalDays+1):
+    for day in range(1, totalDays+1): #Must use for loop statement. (3 points)
         message = f"${2 ** (day -1) / 100:,.2f}"
         print(f"{str(day):>{lenDays}}\t\t{message:>{lenPay}}")
         totalPayInPennies = totalPayInPennies + 2 ** (day-1)
 
-print(f"\n** Overall, the total salary for {totalDays} {'day' if totalDays == 1 else 'days'} is ${totalPayInPennies / 100:,.2f} dollars.")
+#Display a nicely formatted table. Display the salary in dollar and cents , it should be formatted correctly. (9 points)
+dollar = totalPayInPennies // 100
+cents = totalPayInPennies % 100
+print(f"\n** Overall, the total salary for {totalDays} {'day' if totalDays == 1 else 'days'} is ${totalPayInPennies / 100:,.2f},")
+print(f"which is {'' if dollar == 0 else f'{dollar} dollar' if dollar == 1 else f'{dollar} dollars'}{' and ' if dollar > 0 and cents > 0 else ''}{'' if cents == 0 else f'{cents} cent' if cents == 1 else f'{cents} cents'}.")
