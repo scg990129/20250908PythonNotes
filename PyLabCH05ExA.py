@@ -59,4 +59,3 @@ print(f"The total calorie consumed today is {totalCalories}cal")
 
 'Case with error input, 0g fat and 0g carbohydrates:'
 
-
