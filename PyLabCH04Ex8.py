@@ -28,8 +28,14 @@ print(f"\nReceiving all positive numbers!\nThe total sum of the numbers is: {sum
 
 #Check your program with at least three values: 5, 10, -5 (3 points)
 #Include as a comment in your program the response from your program when you run it with each of the above values.  Are the values as expected? (3 points)
-# Test Case 1:
-"""Enter a number within the range of 1 through 10: 1
-The Roman numeral version of that number '1' is 'I'
+# Test Case 5, 10, -5:
+"""Please enter a positive number (enter a negative number or zero to stop): 5
+Please enter a positive number (enter a negative number or zero to stop): 10
+Please enter a positive number (enter a negative number or zero to stop): -5
 
-...Program finished with exit code 0"""
+Receiving all positive numbers!
+The total sum of the numbers is: 15
+
+
+...Program finished with exit code 0
+Press ENTER to exit console."""
