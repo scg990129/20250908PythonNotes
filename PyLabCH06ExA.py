@@ -44,7 +44,7 @@ while True:
             if not name.replace("'",'').replace("-",'').isalpha():
                 raise ValueError("Please enter your full name in alpha: 'Firstname Lastname'")
 
-        with open(f"{nameList[len(nameList)-1]}.html", "w") as file:
+        with open(f"{nameList[len(nameList)-1].upper()}.html", "w") as file:
             print(" Describe yourself: ", end = '')
             selfDescriptionLines = []
             while True:
@@ -84,25 +84,12 @@ while True:
         print(e)
 
 #https://onlinegdb.com/dJ_XCEaBcM
-#Case 1: wall space: 56 & price per Gallon: $3
+#Case 1: Julie Taylor
 """
-Please enter the wall space in square feet (sq ft): 56
-Please enter the price per Gallon of the wall (price per gallon): $3
---------------------------------------------------------------------
+Enter your name: Julie Taylor
+ Describe yourself: I am a computer science major, a member of the
+ Jazz club, and I hope to work as a mobile app developer after I
+ graduate. 
 
-                             Quotation                              
---------------------------------------------------------------------
-The wall space in square feet: 56.00sq ft
-One gallon of paint: $3.00/gal
-The number of gallons of paint required: 0.50gal
-The hours of labor required: 4.00hrs
-The cost of the paint: $1.50
-The labor charges: $140.00
-The total cost of the paint job: $141.50
---------------------------------------------------------------------
-                          End of Quotation                          
-
-
-...Program finished with exit code 0
-Press ENTER to exit console.
+Process finished with exit code 0
 """
