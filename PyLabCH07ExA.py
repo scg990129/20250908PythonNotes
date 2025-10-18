@@ -43,7 +43,7 @@ def displayNumberAnalysisReport(numbers: list[Decimal]):
     lenTitleColumnWidth = len(max([title,titleLow,titleHigh,titleTotal,titleMean,titleMedian,titlpSD, titlsSD], key=len))
     lenValueColumWidth = max(len(f"{t:.02f}") for t in [min(numbers), max(numbers),sum(numbers),statistics.median(numbers),statistics.median(numbers), statistics.stdev(numbers), statistics.pstdev(numbers)])
 
-    print(lenValueColumWidth)
+    # print(lenValueColumWidth)
 
     print(f"{title:^{lenTitleColumnWidth+lenValueColumWidth}}")
     print(f"{'-'*(lenTitleColumnWidth+lenValueColumWidth)}")
@@ -65,12 +65,21 @@ if __name__ == '__main__':
     displayNumberAnalysisReport(numbers)
 
 # https://onlinegdb.com/dJ_XCEaBcM
-# Case 1: Julie Taylor
+# Case 1: 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
 """
-Enter your name: Julie Taylor
- Describe yourself: I am a computer science major, a member of the
- Jazz club, and I hope to work as a mobile app developer after I
- graduate. 
+Enter the list of numbers in (e.g.: 1,2,...): 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+
+                       Number Analysis Report                       
+--------------------------------------------------------------------
+The lowest number in the list:                                     1
+The highest number in the list:                                   20
+The total of the numbers in the list:                            210
+The average(mean) of the numbers in the list:                  10.50
+The median of the numbers in the list:                         10.50
+The sample standard deviation of the numbers in the list:       5.92
+The population standard deviation of the numbers in the list:   5.77
+--------------------------------------------------------------------
+                             Report End                             
 
 Process finished with exit code 0
 """
