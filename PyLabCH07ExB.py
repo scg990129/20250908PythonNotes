@@ -45,7 +45,7 @@ def displayNumberAnalysisReport(numbers: list[Decimal]):
     titleLow = "The lowest number in the list: "
     titleHigh = "The highest number in the list: "
     titleTotal = "The total of the numbers in the list: "
-    titleMean = "The average(mean) of the numbers in the list: "
+    titleMean = "The average of the numbers in the list: "
     # titleMedian = "The median of the numbers in the list: "
     # titlsSD = "The sample standard deviation of the numbers in the list: "
     # titlpSD = "The population standard deviation of the numbers in the list: "
@@ -71,17 +71,24 @@ def displayNumberAnalysisReport(numbers: list[Decimal]):
     # print(numbers)
 
 if __name__ == '__main__':
-    print(numbers := [random.randint(1, 100) for _ in range(20)])
+    numbers = [random.randint(1, 100) for _ in range(20)]
+    print(f"The list of 20 random numbers between 1 & 100: {numbers}")
     print()
     displayNumberAnalysisReport(numbers)
 
 # https://onlinegdb.com/dJ_XCEaBcM
-# Case 1: Julie Taylor
+# Case 1: The list of 20 random numbers
 """
-Enter your name: Julie Taylor
- Describe yourself: I am a computer science major, a member of the
- Jazz club, and I hope to work as a mobile app developer after I
- graduate. 
+The list of 20 random numbers between 1 & 100: [70, 52, 32, 96, 85, 24, 42, 8, 40, 39, 47, 66, 44, 65, 42, 66, 46, 74, 32, 100]
+
+               Number Analysis Report                
+-----------------------------------------------------
+The lowest number in the list:                      8
+The highest number in the list:                   100
+The total of the numbers in the list:            1070
+The average of the numbers in the list:   53.50
+-----------------------------------------------------
+                     Report End                      
 
 Process finished with exit code 0
 """
