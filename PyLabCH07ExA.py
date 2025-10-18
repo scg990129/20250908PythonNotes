@@ -13,6 +13,7 @@
 from decimal import Decimal, InvalidOperation
 import statistics
 
+# For input values use:  1,2,3...,18,19,20  (10 points)
 def getInputNumbers() -> list[Decimal]:
     inputStr = input("Enter the list of numbers in (e.g.: 1,2,...): ").split(',')
     numbers = []
@@ -28,6 +29,7 @@ def getInputNumbers() -> list[Decimal]:
 def formatNum(num, width):
     return f"{num:>{width}.0f}" if num % 1 == 0 else f"{num:>{width}.2f}"
 
+# Display a formatted message for output  (5 points)
 def displayNumberAnalysisReport(numbers: list[Decimal]):
     title = "Number Analysis Report"
     titleLow = "The lowest number in the list: "
@@ -56,9 +58,11 @@ def displayNumberAnalysisReport(numbers: list[Decimal]):
     print(f"{'Report End':^{lenTitleColumnWidth+lenValueColumWidth}}")
     # print(numbers)
 
-numbers = getInputNumbers()
-print()
-displayNumberAnalysisReport(numbers)
+# one to display the results and main to invoke these two.
+if __name__ == '__main__':
+    numbers = getInputNumbers()
+    print()
+    displayNumberAnalysisReport(numbers)
 
 # https://onlinegdb.com/dJ_XCEaBcM
 # Case 1: Julie Taylor
