@@ -57,8 +57,13 @@ def displayNumberAnalysisReport(numbers: list[Decimal]):
 
     # print(lenValueColumWidth)
 
+# IN ADDITION, display the list so the values calculated can be verified. (5 points)
     print(f"{title:^{lenTitleColumnWidth+lenValueColumWidth}}")
     print(f"{'-'*(lenTitleColumnWidth+lenValueColumWidth)}")
+    # The lowest number in the list
+    # The highest number in the list
+    # The total of the numbers in the list
+    # The average of the numbers in the list
     print(f"{titleLow:<{lenTitleColumnWidth}}{formatNum(min(numbers),lenValueColumWidth)}")
     print(f"{titleHigh:<{lenTitleColumnWidth}}{formatNum(max(numbers),lenValueColumWidth)}")
     print(f"{titleTotal:<{lenTitleColumnWidth}}{formatNum(sum(numbers),lenValueColumWidth)}")
@@ -67,28 +72,29 @@ def displayNumberAnalysisReport(numbers: list[Decimal]):
     # print(f"{titlsSD:<{lenTitleColumnWidth}}{formatNum(statistics.stdev(numbers),lenValueColumWidth)}")
     # print(f"{titlpSD:<{lenTitleColumnWidth}}{formatNum(statistics.pstdev(numbers),lenValueColumWidth)}")
     print(f"{'-' * (lenTitleColumnWidth + lenValueColumWidth)}")
-    print(f"{'Report End':^{lenTitleColumnWidth+lenValueColumWidth}}")
+    print(f"{'End of Report':^{lenTitleColumnWidth+lenValueColumWidth}}")
     # print(numbers)
 
 if __name__ == '__main__':
+    # # (10 points) The program should store the numbers in a list (using the random number generator) then display the following data:
     numbers = [random.randint(1, 100) for _ in range(20)]
-    print(f"The list of 20 random numbers between 1 & 100: {numbers}")
-    print()
+    print(f"The list of 20 random numbers between 1 & 100: \n{numbers}\n")
     displayNumberAnalysisReport(numbers)
 
 # https://onlinegdb.com/dJ_XCEaBcM
 # Case 1: The list of 20 random numbers
 """
-The list of 20 random numbers between 1 & 100: [70, 52, 32, 96, 85, 24, 42, 8, 40, 39, 47, 66, 44, 65, 42, 66, 46, 74, 32, 100]
+The list of 20 random numbers between 1 & 100: 
+[35, 97, 58, 39, 21, 65, 53, 89, 50, 79, 2, 96, 32, 60, 56, 32, 34, 62, 49, 80]
 
-               Number Analysis Report                
------------------------------------------------------
-The lowest number in the list:                      8
-The highest number in the list:                   100
-The total of the numbers in the list:            1070
-The average of the numbers in the list:   53.50
------------------------------------------------------
-                     Report End                      
+            Number Analysis Report             
+-----------------------------------------------
+The lowest number in the list:                2
+The highest number in the list:              97
+The total of the numbers in the list:      1089
+The average of the numbers in the list:   54.45
+-----------------------------------------------
+                 End of Report                 
 
 Process finished with exit code 0
 """

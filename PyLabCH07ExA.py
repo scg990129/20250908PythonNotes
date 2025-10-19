@@ -1,7 +1,7 @@
 # @Course: CS_119 #15492
 # @author: Jacob Yeung #900494756
 # @Date: 20251017
-# @version Lab06 - Ex A (a). Number Analysis Program (15 points)
+# @version Lab07 - Ex A (a). Number Analysis Program (15 points)
 # */
 
 # Must use at least 2 functions. One function to get input values,
