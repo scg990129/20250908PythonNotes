@@ -1,25 +1,22 @@
 # @Course: CS_119 #15492
 # @author: Jacob Yeung #900494756
-# @Date: 20251017
-# @version Lab07 - Ex B (b) Number Analysis Program (15 points)
+# @Date: 20251018
+# @version Lab08 - Ex A (a). Sum of Digits in a String
 # */
 
-# This is a minor modification of the problem from (a) above. Instead of asking the user for input values, generate 20 random numbers between 1 & 100.
+# Write a program that asks the user to enter a series of single-digit numbers with nothing separating them
+# The program should display the sum of all the single digit numbers in the string.
+
+# For example, if the user enters 2514, the method should return 12,
+# which is the sum of 2, 5, 1, and 4.
+# Must use functions. One function to get input values,  a function to do the calculation and one to display the results and main to invoke them.    (10 points)
+# Display a formatted message for output  (5 points)
+# Test your program on these inputs:
+# 5
+# 1212
+# 123456789
 #
-# TIP:
-# --------------------------------------------
-# import random
-#        print (random.randint(1,100))
-# Will print a random number between 1 and 100.
-# --------------------------------------------------
-# (10 points) The program should store the numbers in a list (using the random number generator) then display the following data:
-#
-# The lowest number in the list
-# The highest number in the list
-# The total of the numbers in the list
-# The average of the numbers in the list
-#
-# IN ADDITION, display the list so the values calculated can be verified. (5 points)
+# Be aware of the due dates, after Sunday the assignment will close and no more submission. Do not send submissions as email attachments or in comments of the assignment.
 
 from decimal import Decimal, InvalidOperation
 import statistics
