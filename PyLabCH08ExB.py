@@ -84,7 +84,6 @@ def displayReport(formatedTelephoneNumber: str, translateTelephoneNumber: str):
     print(answer)
     print(f"{'-' * lenTitleColumnWidth}")
     print(f"{'End of Translation':^{lenTitleColumnWidth}}")
-    # print(numbers)
 
 # Must use at least 2 functions. One function to get input values, one to display the results and main to invoke these two.    (8 points)
 if __name__ == '__main__':
@@ -97,17 +96,12 @@ if __name__ == '__main__':
 # Case 1: 555-GET-FOOD
 # For example, if the user enters 555-GET-FOOD, the application should display 555-438-3663.
 """
-The list of 20 random numbers between 1 & 100: 
-[35, 97, 58, 39, 21, 65, 53, 89, 50, 79, 2, 96, 32, 60, 56, 32, 34, 62, 49, 80]
-
-            Number Analysis Report             
------------------------------------------------
-The lowest number in the list:                2
-The highest number in the list:              97
-The total of the numbers in the list:      1089
-The average of the numbers in the list:   54.45
------------------------------------------------
-                 End of Report                 
+Enter The Telephone Number (w/o Alphabetic, format XXX-XXX-XXXX): 555-GET-FOOD
+           Alphabetic Telephone Number Translator            
+-------------------------------------------------------------
+The translated telephone number 555-GET-FOOD is: 555-438-3663
+-------------------------------------------------------------
+                     End of Translation                      
 
 Process finished with exit code 0
 """
