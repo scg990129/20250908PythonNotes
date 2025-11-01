@@ -33,29 +33,22 @@ try:
     for keyword in sorted(wordCountDictionary.keys()):
         print(f"'{keyword}': {wordCountDictionary[keyword]}")
 
+    # Sort the unique words alphabetically for clear output
+    for keyword in sorted(wordCountDictionary.keys()):
+        count = wordCountDictionary[keyword]
+        print(f"'{keyword}': {count}")
+
+    # --- Display Unique Word Count (Meets 5 points requirement) ---
+    total_unique_words = len(wordCountDictionary)
+    print("\n-------------------------------------")
+    print(f"Total Unique Words Found: {total_unique_words}")
+    print("-------------------------------------")
+
 except IOError as e:
     print(e)
 
 #https://onlinegdb.com/dJ_XCEaBcM
 #Case 1: wall space: 56 & price per Gallon: $3
 """
-Please enter the wall space in square feet (sq ft): 56
-Please enter the price per Gallon of the wall (price per gallon): $3
---------------------------------------------------------------------
 
-                             Quotation                              
---------------------------------------------------------------------
-The wall space in square feet: 56.00sq ft
-One gallon of paint: $3.00/gal
-The number of gallons of paint required: 0.50gal
-The hours of labor required: 4.00hrs
-The cost of the paint: $1.50
-The labor charges: $140.00
-The total cost of the paint job: $141.50
---------------------------------------------------------------------
-                          End of Quotation                          
-
-
-...Program finished with exit code 0
-Press ENTER to exit console.
 """
