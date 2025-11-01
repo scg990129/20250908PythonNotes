@@ -1,7 +1,7 @@
 # @Course: CS_119 #15492
 # @author: Jacob Yeung #900494756
 # @Date: 20251031
-# @version Lab09 (b) Unique Words
+# @version Lab09 (b) Unique Words #04
 
 # Write a program that opens a specified text file then displays a list of all the unique words found in the file.
 # A word is defined as made up of letters only. No numbers, commas etc. are part of the word.
@@ -22,12 +22,17 @@ try:
             line = line.strip().lower()
             for i in range(len(line)):
                 if not (temp := line[i]).isalpha():
-                    line = line.replace(temp, " ") # processed_line = ''.join(c if c.isalpha() else ' ' for c in line)
+                    line = line.replace(temp, " ")
             for word in line.split():
                 if word in wordCountDictionary:
                     wordCountDictionary[word] += 1
                 else:
                     wordCountDictionary[word] = 1
+
+            # Other recommendation
+            # processed_line = ''.join(c if c.isalpha() else ' ' for c in line)
+            # for word in processed_line.split():
+            #     wordCountDictionary[word] = wordCountDictionary.get(word, 0) + 1
 
     print("\n--- Word Frequency Count ---")
     for keyword in sorted(wordCountDictionary.keys()):
