@@ -14,10 +14,19 @@
 sourceFile = "text.txt"
 wordCountDictionary = {}
 
+column = 50
+separator = '-'*column
+
+print(separator)
+print(f'{f" Lab09 (b) Unique Words Counter"::^{column}}')
 try:
+    print(f'{f"Reading the File '{sourceFile}'":^{column}}')
+    print(separator)
     with open(sourceFile, "r") as file:
         lines = file.readlines()
+        print(f'{"Analyzing...":^{column}}')
 
+        print(f'{"Word Frequency Counting...":^{column}}')
         for line in lines:
             line = line.strip().lower()
             for i in range(len(line)):
@@ -34,26 +43,33 @@ try:
             # for word in processed_line.split():
             #     wordCountDictionary[word] = wordCountDictionary.get(word, 0) + 1
 
-    print("\n--- Word Frequency Count ---")
-    for keyword in sorted(wordCountDictionary.keys()):
-        print(f"'{keyword}': {wordCountDictionary[keyword]}")
 
-    # Sort the unique words alphabetically for clear output
+    # for keyword in sorted(wordCountDictionary.keys()):
+    #     print(f"'{keyword}': {wordCountDictionary[keyword]}")
+    keyColumn = 'Unique Word'
+    ValueColumn = 'Frequency'
+    keyLen = max(len(max(wordCountDictionary, key=len)), len(keyColumn))
+    valueLen = max(max(len(str(v)) for v in wordCountDictionary.values()), len(ValueColumn))
+
+    print(f"{f'{"Unique Words Report":^{column}}':^{column}}")
+    print(f'f"{keyColumn:<{keyLen}} {ValueColumn:<{valueLen}}":^{column}')
     for keyword in sorted(wordCountDictionary.keys()):
         count = wordCountDictionary[keyword]
-        print(f"'{keyword}': {count}")
+        print(f'{f"{keyword:<{keyLen}} {count:<{valueLen}}":^{column}}')
+        # print(f"'{keyword}': {count}")
 
-    # --- Display Unique Word Count (Meets 5 points requirement) ---
     total_unique_words = len(wordCountDictionary)
-    print("\n-------------------------------------")
+    print(f"\n{separator}")
     print(f"Total Unique Words Found: {total_unique_words}")
-    print("-------------------------------------")
+    print(separator)
 
 except IOError as e:
     print(e)
 
+print(f'{"End":^{column}}')
+print(separator)
 #https://onlinegdb.com/dJ_XCEaBcM
-#Case 1: wall space: 56 & price per Gallon: $3
+#Case 1
 """
 
 """

@@ -75,6 +75,7 @@ correctedStates = set()
 incorrectedStates = set()
 column = 80
 
+# The program should keep a count of the number of correct and incorrect responses.
 correctedCount = 0
 incorrectedCount = 0
 separator = '=' * column
@@ -101,12 +102,14 @@ while len(keysList := list(US_STATES_n_CAPITALS.keys())) != 0:
             correctedCount += 1
             print(f"✅Correct! The capital of state '{randomKey.title()}' is '{answer.title()}'!\n✌️You win 1 point!")
 
+# Display a formatted message for output  (2 points)
 print(f"\n{separator}")
 if len(keysList) == 0:
     print(f"{f'Congratulations! You have finished all {len(US_STATES_n_CAPITALS)} state after {correctedCount + incorrectedCount} tries!':^{column}}")
 else:
     print(f"{f'Congratulations! You have finished {len(correctedStates)} out of {len(US_STATES_n_CAPITALS)} states after {correctedCount + incorrectedCount} tries!':^{column}}")
 print(separator)
+#  The score should be displayed when the user does not wish to continue playing. (3 points)
 print(f"{f'Total corrected: {correctedCount}'}")
 print(f"{f'Total lose: {incorrectedCount}'}")
 print(f"{f'Total score: {correctedCount - incorrectedCount}/{correctedCount + incorrectedCount}'}")
@@ -131,14 +134,79 @@ print(separator)
 
 
 # https://onlinegdb.com/dJ_XCEaBcM
-# Case 1: The list of 20 random numbers
+# Case 1:
 """
-Enter a series of single-digit numbers without separating: 1212
-     Sum of Digits      
-------------------------
-Sum of Digits in 1212: 6
-------------------------
-   End of Translation   
+================================================================================
+                               Capital Quiz 2025                                
+================================================================================
+
+Question 1. Enter the capital of state 'Tennessee' (No input for exit): Nashville
+✅Correct! The capital of state 'Tennessee' is 'Nashville'!
+✌️You win 1 point!
+Question 2. Enter the capital of state 'Kansas' (No input for exit): 
+Game over!
+
+================================================================================
+      Congratulations! You have finished 1 out of 50 states after 1 tries!      
+================================================================================
+Total corrected: 1
+Total lose: 0
+Total score: 1/1
+================================================================================
+                    State             Capital     Corrected?                    
+                    Alabama          Montgomery          N/A                    
+                    Alaska             Juneau            N/A                    
+                    Arizona           Phoenix            N/A                    
+                    Arkansas        Little Rock          N/A                    
+                    California       Sacramento          N/A                    
+                    Colorado           Denver            N/A                    
+                    Connecticut       Hartford           N/A                    
+                    Delaware           Dover             N/A                    
+                    Florida         Tallahassee          N/A                    
+                    Georgia           Atlanta            N/A                    
+                    Hawaii            Honolulu           N/A                    
+                    Idaho              Boise             N/A                    
+                    Illinois        Springfield          N/A                    
+                    Indiana         Indianapolis         N/A                    
+                    Iowa             Des Moines          N/A                    
+                    Kansas             Topeka            N/A                    
+                    Kentucky         Frankfort           N/A                    
+                    Louisiana       Baton Rouge          N/A                    
+                    Maine             Augusta            N/A                    
+                    Maryland         Annapolis           N/A                    
+                    Massachusetts      Boston            N/A                    
+                    Michigan          Lansing            N/A                    
+                    Minnesota        Saint Paul          N/A                    
+                    Mississippi       Jackson            N/A                    
+                    Missouri       Jefferson City        N/A                    
+                    Montana            Helena            N/A                    
+                    Nebraska          Lincoln            N/A                    
+                    Nevada          Carson City          N/A                    
+                    New Hampshire     Concord            N/A                    
+                    New Jersey        Trenton            N/A                    
+                    New Mexico        Santa Fe           N/A                    
+                    New York           Albany            N/A                    
+                    North Carolina    Raleigh            N/A                    
+                    North Dakota      Bismarck           N/A                    
+                    Ohio              Columbus           N/A                    
+                    Oklahoma       Oklahoma City         N/A                    
+                    Oregon             Salem             N/A                    
+                    Pennsylvania     Harrisburg          N/A                    
+                    Rhode Island     Providence          N/A                    
+                    South Carolina    Columbia           N/A                    
+                    South Dakota       Pierre            N/A                    
+                    Tennessee        Nashville             ✓                    
+                    Texas              Austin            N/A                    
+                    Utah           Salt Lake City        N/A                    
+                    Vermont          Montpelier          N/A                    
+                    Virginia          Richmond           N/A                    
+                    Washington        Olympia            N/A                    
+                    West Virginia    Charleston          N/A                    
+                    Wisconsin         Madison            N/A                    
+                    Wyoming           Cheyenne           N/A                    
+================================================================================
+                                    End Quiz                                    
+================================================================================
 
 Process finished with exit code 0
 """
