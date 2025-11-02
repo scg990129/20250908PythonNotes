@@ -71,27 +71,63 @@ US_STATES_n_CAPITALS = { # https://en.wikipedia.org/wiki/List_of_state_and_terri
 }
 
 import random
-correctedStates = {}
-incorrectedStates = {}
+correctedStates = set()
+incorrectedStates = set()
+column = 80
 
-inputCount = 0
+correctedCount = 0
+incorrectedCount = 0
+separator = '=' * column
+print(separator)
+print(f"{'Capital Quiz 2025':^{column}}")
+print(separator, end='\n\n')
+
 while len(keysList := list(US_STATES_n_CAPITALS.keys())) != 0:
     randomKey = random.choice(keysList)
-    inputAnswer = input(f"Enter the capital name of {randomKey.title()} (No input for exit): ").strip().lower()
+    inputAnswer = input(f"Question {correctedCount+incorrectedCount+1}. Enter the capital of state '{randomKey.title()}' (No input for exit): ").strip()
     if len(inputAnswer) == 0:
-        break
+        print("Game over!")
+        break # The program should loop until the user wishes to quit.(5 points)
     else:
-        if inputAnswer != US_STATES_n_CAPITALS[randomKey].lower():
-            print("Incorrect! The correct answer is: ", US_STATES_n_CAPITALS[randomKey])
-            incorrectedStates[randomKey] = US_STATES_n_CAPITALS[randomKey]
+        # The program should then randomly quiz the user by displaying the name of a state and
+        # asking the user to enter that state’s capital.
+        if inputAnswer.lower() != (answer := US_STATES_n_CAPITALS[randomKey].title()).lower():
+            incorrectedStates.add(randomKey.title())
+            incorrectedCount += 1
+            print(f"❌Incorrect! The correct the capital of state '{randomKey.title()}' is: '{answer.title()}'!\n💥You lose 1 point!")
         else:
-            print("Correct!")
-            correctedStates[randomKey] = inputAnswer
+            correctedStates.add(randomKey.title())
             keysList.remove(randomKey)
+            correctedCount += 1
+            print(f"✅Correct! The capital of state '{randomKey.title()}' is '{answer.title()}'!\n✌️You win 1 point!")
 
-print(f"Corrected states ({len(correctedStates)}): {correctedStates}")
-print(f"Incorrected states ({len(incorrectedStates)}): {incorrectedStates}")
-
+print(f"\n{separator}")
+if len(keysList) == 0:
+    print(f"{f'Congratulations! You have finished all {len(US_STATES_n_CAPITALS)} state after {correctedCount + incorrectedCount} tries!':^{column}}")
+else:
+    print(f"{f'Congratulations! You have finished {len(correctedStates)} out of {len(US_STATES_n_CAPITALS)} states after {correctedCount + incorrectedCount} tries!':^{column}}")
+print(separator)
+print(f"{f'Total corrected: {correctedCount}'}")
+print(f"{f'Total lose: {incorrectedCount}'}")
+print(f"{f'Total score: {correctedCount - incorrectedCount}/{correctedCount + incorrectedCount}'}")
+print(separator)
+keyLen = len(max(US_STATES_n_CAPITALS, key=len))
+valueLen = len(max(US_STATES_n_CAPITALS.values(), key=len))
+correctTitle = 'Corrected?'
+correctedLen = len(correctTitle)
+print(f'{f"{'State':<{keyLen}} {'Capital':^{valueLen}} {correctTitle:>{correctedLen}}":^{column}}')
+for state, capital in US_STATES_n_CAPITALS.items():
+    if state not in correctedStates and state not in incorrectedStates:
+        print(f'{f"{state:<{keyLen}} {capital:^{valueLen}} {'N/A':>{correctedLen}}":^{column}}')
+    elif state in correctedStates and state in incorrectedStates:
+        print(f'{f"{state:<{keyLen}} {capital:^{valueLen}} {'⍻':>{correctedLen}}":^{column}}')
+    elif state in correctedStates and state not in incorrectedStates:
+        print(f'{f"{state:<{keyLen}} {capital:^{valueLen}} {'✓':>{correctedLen}}":^{column}}')
+    else:
+        print(f'{f"{state:<{keyLen}} {capital:^{valueLen}} {'✗':>{correctedLen}}":^{column}}')
+print(separator)
+print(f"{'End Quiz':^{column}}")
+print(separator)
 
 
 # https://onlinegdb.com/dJ_XCEaBcM
