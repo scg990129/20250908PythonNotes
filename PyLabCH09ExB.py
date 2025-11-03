@@ -28,45 +28,55 @@ try:
 
         print(f'{"Word Frequency Counting...":^{column}}')
         for line in lines:
-            line = line.strip().lower()
-            for i in range(len(line)):
-                if not (temp := line[i]).isalpha():
-                    line = line.replace(temp, " ")
+            line = line.strip().lower().replace('-', '')
             for word in line.split():
-                if word in wordCountDictionary:
-                    wordCountDictionary[word] += 1
+                if not any(char.isalpha() for char in word):
+                    continue
+                isRead = False
+                tempWord = ''
+                for i, char in enumerate(word):
+                    if not isRead and char.isalpha():
+                        tempWord += char
+                        isRead = True
+                    elif isRead and not char.isalpha():
+                        break
+                    elif isRead and char.isalpha():
+                        tempWord += char
+                # print(f"Get word: {tempWord}")
+                if tempWord in wordCountDictionary:
+                    wordCountDictionary[tempWord] += 1
                 else:
-                    wordCountDictionary[word] = 1
+                    wordCountDictionary[tempWord] = 1
 
             # Other recommendation
             # processed_line = ''.join(c if c.isalpha() else ' ' for c in line)
             # for word in processed_line.split():
             #     wordCountDictionary[word] = wordCountDictionary.get(word, 0) + 1
 
+except IOError as e:
+    print(e)
+    exit(-1)
 
-    # for keyword in sorted(wordCountDictionary.keys()):
-    #     print(f"'{keyword}': {wordCountDictionary[keyword]}")
-    keyColumn = 'Unique Word'
-    ValueColumn = 'Frequency'
+keyColumn = 'Unique Word'
+valueColumn = 'Frequency'
+print(separator)
+if len(wordCountDictionary) > 0:
     keyLen = max(len(max(wordCountDictionary, key=len)), len(keyColumn))
-    valueLen = max(max(len(str(v)) for v in wordCountDictionary.values()), len(ValueColumn))
+    valueLen = max(max(len(str(v)) for v in wordCountDictionary.values()), len(valueColumn))
     print(separator)
     print(f"{f'{"Unique Words Report":^{column}}':^{column}}")
     print(separator)
-    print(f'{f"{keyColumn:<{keyLen}} {ValueColumn:>{valueLen}}":^{column}}')
+    print(f'{f"{keyColumn:<{keyLen}} {valueColumn:>{valueLen}}":^{column}}')
     for keyword in sorted(wordCountDictionary.keys()):
         count = wordCountDictionary[keyword]
         print(f'{f"{keyword:<{keyLen}} {count:>{valueLen}}":^{column}}')
-        # print(f"'{keyword}': {count}")
-
+            # print(f"'{keyword}': {count}")
     total_unique_words = len(wordCountDictionary)
     print(separator)
     print(f"Total Unique Words Found: {total_unique_words}")
-    print(separator)
-
-except IOError as e:
-    print(e)
-
+else:
+    print("No Unique Words Found.")
+print(separator)
 print(f'{"End of Report":^{column}}')
 print(separator)
 #https://onlinegdb.com/dJ_XCEaBcM
