@@ -50,23 +50,24 @@ try:
     ValueColumn = 'Frequency'
     keyLen = max(len(max(wordCountDictionary, key=len)), len(keyColumn))
     valueLen = max(max(len(str(v)) for v in wordCountDictionary.values()), len(ValueColumn))
-
+    print(separator)
     print(f"{f'{"Unique Words Report":^{column}}':^{column}}")
-    print(f'f"{keyColumn:<{keyLen}} {ValueColumn:<{valueLen}}":^{column}')
+    print(separator)
+    print(f'{f"{keyColumn:<{keyLen}} {ValueColumn:>{valueLen}}":^{column}}')
     for keyword in sorted(wordCountDictionary.keys()):
         count = wordCountDictionary[keyword]
-        print(f'{f"{keyword:<{keyLen}} {count:<{valueLen}}":^{column}}')
+        print(f'{f"{keyword:<{keyLen}} {count:>{valueLen}}":^{column}}')
         # print(f"'{keyword}': {count}")
 
     total_unique_words = len(wordCountDictionary)
-    print(f"\n{separator}")
+    print(separator)
     print(f"Total Unique Words Found: {total_unique_words}")
     print(separator)
 
 except IOError as e:
     print(e)
 
-print(f'{"End":^{column}}')
+print(f'{"End of Report":^{column}}')
 print(separator)
 #https://onlinegdb.com/dJ_XCEaBcM
 #Case 1
