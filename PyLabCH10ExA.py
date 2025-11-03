@@ -1,8 +1,7 @@
 # @Course: CS_119 #15492
 # @author: Jacob Yeung #900494756
-# @Date: 20251031
+# @Date: 20251102
 # @version Lab10 (A) Car Class
-# https://ilearn.laccd.edu/courses/323078/assignments/8553471#submit
 
 # Write a class named  Car that has the following data attributes:
 #   __year_model (for the car’s year model)
@@ -25,48 +24,58 @@
 # Then call Accelerate  method five times.  After each call to the Accelerate method, get the current speed of the car and display it. (5 points)
 # Then call  the Brake method five times. After each call to the method, get the current speed of the car and display it.  (5 points)
 
-sourceFile = "text.txt"
-wordCountDictionary = {}
+class Car:
+    def __init__(self, year_model: int, make: str):
+        self.__year_model = year_model
+        self.__make = make
+        self.__speed = 0
+        # print(f"--- New Car Created ---")
+        # print(f"Model: {self.__year_model}")
+        # print(f"Make: {self.__make}")
+        # print(f"Initial Speed: {self.__speed} mph\n")
 
-try:
-    with open(sourceFile, "r") as file:
-        lines = file.readlines()
+    def accelerate(self):
+        self.__speed += 5
+        # print(f"Accelerating... Current Speed: {self.__speed} mph")
 
-        for line in lines:
-            line = line.strip().lower()
-            for i in range(len(line)):
-                if not (temp := line[i]).isalpha():
-                    line = line.replace(temp, " ")
-            for word in line.split():
-                if word in wordCountDictionary:
-                    wordCountDictionary[word] += 1
-                else:
-                    wordCountDictionary[word] = 1
+    def brake(self):
+        self.__speed = 0 if self.__speed <= 5 else self.__speed - 5
+        # print(f"Braking... Current Speed: {self.__speed} mph")
 
-            # Other recommendation
-            # processed_line = ''.join(c if c.isalpha() else ' ' for c in line)
-            # for word in processed_line.split():
-            #     wordCountDictionary[word] = wordCountDictionary.get(word, 0) + 1
+    def get_speed(self) -> int:
+        return self.__speed
 
-    print("\n--- Word Frequency Count ---")
-    for keyword in sorted(wordCountDictionary.keys()):
-        print(f"'{keyword}': {wordCountDictionary[keyword]}")
+my_car = Car(2024, "Tesla Model 3")
 
-    # Sort the unique words alphabetically for clear output
-    for keyword in sorted(wordCountDictionary.keys()):
-        count = wordCountDictionary[keyword]
-        print(f"'{keyword}': {count}")
+    # 2. Call the accelerate method five times and display the speed
+print("---------------------------------")
+print("--- 5 Calls to accelerate() ---")
+print("---------------------------------")
+for i in range(1, 6):
+    my_car.accelerate()
+    current_speed = my_car.get_speed()
+        # The accelerate method already prints the speed, but the original
+        # request implies getting and displaying it after the call, so we
+        # ensure it's available via get_speed.
+        # print(f"After acceleration #{i}, Speed is: {current_speed} mph")
 
-    # --- Display Unique Word Count (Meets 5 points requirement) ---
-    total_unique_words = len(wordCountDictionary)
-    print("\n-------------------------------------")
-    print(f"Total Unique Words Found: {total_unique_words}")
-    print("-------------------------------------")
+    # Add a separation for clarity
+print("\n---------------------------------")
 
-except IOError as e:
-    print(e)
+    # 3. Call the brake method five times and display the speed
+print("--- 5 Calls to brake() ---")
+print("---------------------------------")
+for i in range(1, 6):
+    my_car.brake()
+    current_speed = my_car.get_speed()
+        # The brake method already prints the speed.
+        # print(f"After braking #{i}, Speed is: {current_speed} mph")
 
-#https://onlinegdb.com/dJ_XCEaBcM
+print("\n---------------------------------")
+print(f"Final Speed: {my_car.get_speed()} mph")
+print("---------------------------------")
+
+    #https://onlinegdb.com/dJ_XCEaBcM
 #Case 1: wall space: 56 & price per Gallon: $3
 """
 
