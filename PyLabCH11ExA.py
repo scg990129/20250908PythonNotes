@@ -167,7 +167,90 @@ print(separatorMain)
 # Employee#01 name: E01,
 # ProductionWorker#02 name: E02, Shift 1, pay rate: $9
 # ProductionWorker#05 name: E05, Shift 2, pay rate: $99
+# delete #02
 # 3 to display employee details
 """
+==================================================
+          Lab11 (A) Employee management           
+==================================================
+Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: 3
+==================================================
+             Display Employee Details             
+==================================================
+No employee found!
+==================================================
+Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: 2
+==================================================
+                 Delete Employee                  
+==================================================
+No employee found!
+==================================================
+Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: 1
+==================================================
+                 Insert Employee                  
+==================================================
+Insert Employee (Abort for Any Exceptions):
+Enter 1 for Employee or 2 for ProductionWorker: 1
+Enter his or her name: E01
+Enter Employee Number (skip for auto assign 1): 
+Employee number #1 assigned.
+#01, Employee: E01 inserted successfully!
+==================================================
+Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: 1
+==================================================
+                 Insert Employee                  
+==================================================
+Insert Employee (Abort for Any Exceptions):
+Enter 1 for Employee or 2 for ProductionWorker: 2
+Enter his or her name: E02
+Enter Employee Number (skip for auto assign 2): 2
+Employee number #2 assigned.
+Enter the shift number (1 for shift day, 2 for shift night): 1
+Enter the hourly pay rate: 9
+#02, ProductionWorker: E02 (Shift 1, Hourly Pay Rate: $09) inserted successfully!
+==================================================
+Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: 1
+==================================================
+                 Insert Employee                  
+==================================================
+Insert Employee (Abort for Any Exceptions):
+Enter 1 for Employee or 2 for ProductionWorker: 2
+Enter his or her name: E05
+Enter Employee Number (skip for auto assign 3): 5
+Employee number #5 assigned.
+Enter the shift number (1 for shift day, 2 for shift night): 2
+Enter the hourly pay rate: 99
+#05, ProductionWorker: E05 (Shift 2, Hourly Pay Rate: $99) inserted successfully!
+==================================================
+Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: 3
+==================================================
+             Display Employee Details             
+==================================================
+#01, Employee: E01
+#02, ProductionWorker: E02 (Shift 1, Hourly Pay Rate: $09)
+#05, ProductionWorker: E05 (Shift 2, Hourly Pay Rate: $99)
+==================================================
+Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: 2
+==================================================
+                 Delete Employee                  
+==================================================
+Enter the employee number to delete: 2
+Employee #02, ProductionWorker: E02 (Shift 1, Hourly Pay Rate: $09) deleted successfully!
+==================================================
+Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: 3
+==================================================
+             Display Employee Details             
+==================================================
+#01, Employee: E01
+#05, ProductionWorker: E05 (Shift 2, Hourly Pay Rate: $99)
+==================================================
+Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: 
+Exiting...
+==================================================
+                 End of Lab11 (A)                 
+==================================================
 
+
+...Program finished with exit code 0
+Press ENTER to exit console.
 """
