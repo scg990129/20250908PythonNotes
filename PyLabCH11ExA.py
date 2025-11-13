@@ -51,7 +51,7 @@ class Shifts(Enum):
     NA = 3
     def __str__(self):
         # The day shift is shift 1 and the night shift is shift 2.
-        return f"shift {self.value}" # return f"{self.name} ({self.value})"
+        return f"shift {self.name}" # return f"{self.name} ({self.value})"
 
 class ProductionWorker(Employee): # Next, write a ProductionWorker class named that is a subclass of Employee class.
     def __init__(self, name: str, number: int, shiftNumber: int, payRateHourly: Decimal):
@@ -76,23 +76,20 @@ class ProductionWorker(Employee): # Next, write a ProductionWorker class named t
             raise ValueError(f"Invalid Hourly Pay Rate '{payRateHourly}': It must be a positive Decimal.")
         self.__payRateHourly = payRateHourly
     def __str__(self):
-        return f"#{self.getNumber():02} ProductionWorker: {self.getName()} (Shift {self.__shiftNumber}, Hourly Pay Rate: ${self.__payRateHourly:02})"
+        return f"#{self.getNumber():02}, ProductionWorker: {self.getName()} (Shift {self.__shiftNumber}, Hourly Pay Rate: ${self.__payRateHourly:02})"
 
 width = 50
+separatorMain = "=" * width
 separator = "-" * width
 employees = {}
 
 # CRUD
 def displayEmployeeDetails():
-    print(separator)
-    print(f"Employee Details:")
-    print(separator)
     if len(employees) == 0:
         print("No employee found!")
     else:
         for key, item in sorted(employees.items()):
             print(item)
-    print(separator)
 
 def insertEmployee():
     print("Insert Employee (Abort for Any Exceptions):")
@@ -101,11 +98,14 @@ def insertEmployee():
         raise ValueError("Invalid input type! Aborting...")
     name = input("Enter his or her name: ")
     autoEmployeeNumber = max(employees.keys()) + 1 if len(employees) > 0 else 1
+    autoEmployeeNumber = autoEmployeeNumber if len(inputStr := input(f"Enter Employee Number (skip for auto assign {autoEmployeeNumber}): ").strip()) == 0 else int(inputStr)
+    if autoEmployeeNumber in employees:
+        raise ValueError("Employee number already exists! Aborting... Please try again with a different number.")
     print(f"Employee number #{autoEmployeeNumber} assigned.")
     if inputType == 1:
         tempEmployee = Employee(name, autoEmployeeNumber)
     elif inputType == 2:
-        shiftNumber = int(input("Enter the shift number: "))
+        shiftNumber = int(input(f"Enter the shift number (1 for {Shifts(1)}, 2 for {Shifts(2)}): "))
         payRateHourly = Decimal(input("Enter the hourly pay rate: "))
         tempEmployee = ProductionWorker(name, autoEmployeeNumber, shiftNumber, payRateHourly)
     else:
@@ -114,83 +114,60 @@ def insertEmployee():
     print(f"{tempEmployee} inserted successfully!")
 
 def deleteEmployee():
+    if len(employees) == 0:
+        print("No employee found!")
+        return
     delEmployeeNumber = int(input("Enter the employee number to delete: "))
     if delEmployeeNumber in employees:
+        data = employees[delEmployeeNumber]
         del employees[delEmployeeNumber]
-        print(f"Employee #{delEmployeeNumber} deleted successfully!")
+        print(f"Employee {data} deleted successfully!")
     else:
         print(f"Employee #{delEmployeeNumber} not found!")
-    displayEmployeeDetails()
 
-print(separator)
+print(separatorMain)
 print(f"{'Lab11 (A) Employee management':^{width}}")
-print(separator)
-while True:
-    selection = int(input("Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, 4 to exit: "))
-    match selection:
-        case 1:
-            try:
-                insertEmployee()
-            except ValueError as e:
-                print(f"{e}")
-        case 2:
-            deleteEmployee()
-        case 3:
-            displayEmployeeDetails()
-        case 4:
-            print("Exiting...")
-            break
-        case _:
-            print("Invalid selection!")
-print(separator)
+print(separatorMain)
+try:
+    while True:
+        selection = int(input("Enter 1 to insert an employee, 2 to delete an employee, 3 to display employee details, other to exit: "))
+        match selection:
+            case 1:
+                try:
+                    print(separatorMain)
+                    print(f"{"Insert Employee":^{width}}")
+                    print(separatorMain)
+                    insertEmployee()
+                except ValueError as e:
+                    print(f"{e}")
+                print(separatorMain)
+            case 2:
+                print(separatorMain)
+                print(f"{"Delete Employee":^{width}}")
+                print(separatorMain)
+                deleteEmployee()
+                print(separatorMain)
+            case 3:
+                print(separatorMain)
+                print(f"{"Display Employee Details":^{width}}")
+                print(separatorMain)
+                displayEmployeeDetails()
+                print(separatorMain)
+            case _:
+                print("Exiting...")
+except ValueError as e:
+    print("Exiting...")
+print(separatorMain)
 print(f"{'End of Lab11 (A)':^{width}}")
-print(separator)
-
-
+print(separatorMain)
 
 # https://onlinegdb.com/dJ_XCEaBcM
 # Case 1
+# 3 to display employee details > 2 to delete an employee> 1 to insert an employee:
+# Employee#01 name: E01,
+# ProductionWorker#02 name: E02, Shift 1, pay rate: $9
+# ProductionWorker#05 name: E05, Shift 2, pay rate: $99
+# 3 to display employee details
 """
---------------------------------------------------
-               Lab10 (A) Car Class                
---------------------------------------------------
-Class instanced: Car object: 2006 civic Honda (Speed: 0mph)
---------------------------------------------------
---------------------------------------------------
-STAGE 01: Now, let's accelerate the car 5 times...
-The speed before accelerating: 0mph
---------------------------------------------------
-The 1st acceleration: 
-Current speed after acceleration #1: 5mph
-The 2nd acceleration: 
-Current speed after acceleration #2: 10mph
-The 3rd acceleration: 
-Current speed after acceleration #3: 15mph
-The 4th acceleration: 
-Current speed after acceleration #4: 20mph
-The 5th acceleration: 
-Current speed after acceleration #5: 25mph
---------------------------------------------------
-Completed 5 times acceleration! Current Speed: 25mph
---------------------------------------------------
---------------------------------------------------
-STAGE 02: Now, let's brake the car 5 times...
-The speed before braking: 25mph
-The 1st braking: 
-Current speed after brake #1: 20mph
-The 2nd braking: 
-Current speed after brake #2: 15mph
-The 3rd braking: 
-Current speed after brake #3: 10mph
-The 4th braking: 
-Current speed after brake #4: 5mph
-The 5th braking: 
-Current speed after brake #5: 0mph
---------------------------------------------------
---------------------------------------------------
-Final Stage - list out the status of Car Object:
-Car object: 2006 civic Honda (Speed: 0mph)
---------------------------------------------------
 
-Process finished with exit code 0
 """
