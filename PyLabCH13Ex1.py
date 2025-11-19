@@ -8,7 +8,6 @@
 # Upload an image that displays the data when the Show Info button is clicked. (3 points)
 
 import tkinter as tk
-from tkinter import ttk
 
 MyName = "Jacob Yeung"
 MyAddress = "1527 Palm Ave, APT E\nSan Gabriel, CA 91776"
@@ -20,14 +19,14 @@ class CustomApp(tk.Tk):
         self.title("Ex 1 - Name and Address")
         self.geometry("300x150")
 
-        self.topFrame = ttk.Frame(self, borderwidth=5)
-        self.bottomFrame = ttk.Frame(self, borderwidth=5)
+        self.topFrame = tk.Frame(self, borderwidth=5)
+        self.bottomFrame = tk.Frame(self, borderwidth=5)
         self.labelName = tk.Label(self.topFrame)
         self.msgAddress = tk.Message(self.topFrame, width=300)
         txt = "Show Info"
-        self.buttonShowInfo = ttk.Button(self.bottomFrame, text=txt ,command=self.showInfo, width=len(txt))
+        self.buttonShowInfo = tk.Button(self.bottomFrame, text=txt ,command=self.showInfo, width=len(txt))
         self.buttonShowInfo.pack(side=tk.LEFT, padx=(5, 5))
-        self.buttonExit = ttk.Button(self.bottomFrame, text="Quit", command=self.destroy, width=len(txt))
+        self.buttonExit = tk.Button(self.bottomFrame, text="Quit", command=self.destroy, width=len(txt))
         self.buttonExit.pack(side=tk.RIGHT, padx=(5, 5))
         self.labelName.pack(side=tk.TOP, pady=(5, 5)) # #fill=tk.X)
         self.msgAddress.pack(side=tk.BOTTOM,pady=(5, 5)) #fill=tk.X)
