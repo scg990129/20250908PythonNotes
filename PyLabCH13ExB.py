@@ -18,6 +18,7 @@
 
 import tkinter as tk
 from datetime import datetime
+import tkinter.messagebox as messagebox
 
 ListService = [("Oil change", 30),
                      ("Lube job", 20),
@@ -50,9 +51,6 @@ class CustomApp(tk.Tk):
         self.rightFrame.pack_propagate(False)
 
         self.boolVars = []
-        # self.masterVar = tk.BooleanVar(master=self.leftFrame, value=False)
-        # self.checkBtn = tk.Checkbutton(self.leftFrame, text="Select All", variable=self.masterVar, command=self.selectAll)
-        # self.checkBtn.pack(anchor="w")  # side=tk.TOP, pady=(5, 5))
         for item in ListService:
             self.boolVars.append(tk.BooleanVar(master=self.leftFrame, value=False))
             checkBtn = tk.Checkbutton(self.leftFrame, text=item[0], variable=self.boolVars[-1], command=self.stateChanged)
@@ -63,7 +61,7 @@ class CustomApp(tk.Tk):
         self.txtReset = "Reset"
         txtQuit = "Quit"
         self.MAX_BUTTON_WIDTH = max(len(txtTotal), len(self.txtSelectAll), len(txtQuit))
-        self.buttonShowInfo = tk.Button(self.bottomFrame, text=txtTotal, command=self.showInfo, width=self.MAX_BUTTON_WIDTH)
+        self.buttonShowInfo = tk.Button(self.bottomFrame, text=txtTotal, command=self.showInfo, width=self.MAX_BUTTON_WIDTH, state=tk.DISABLED)
         self.buttonShowInfo.pack(side=tk.LEFT, padx=(5, 5))
         self.buttonReset = tk.Button(self.bottomFrame, text=self.txtSelectAll, command=self.selectAllOrReset, width=self.MAX_BUTTON_WIDTH)
         self.buttonReset.pack(side=tk.LEFT, padx=(5, 5))
@@ -79,17 +77,11 @@ class CustomApp(tk.Tk):
         self.topFrame.pack()
         self.bottomFrame.pack(side=tk.BOTTOM)
 
-    # def selectAll(self):
-    #     for var in self.boolVars:
-    #         var.set(self.masterVar.get())
-    #     self.stateChanged()
-
     def showInfo(self):
-        print(f"Total charges: {self.getSum()}")
-        self.stateChanged()
+        messagebox.showinfo(title="Total Charges Summary", message=f"Total charges: ${self.getSum():.2f}\nThanks you for shopping with us!")
+
 
     def selectAllOrReset(self):
-        selectedList = []
         isAll = True
         for var in self.boolVars:
             if not var.get():
@@ -108,13 +100,16 @@ class CustomApp(tk.Tk):
         messageStr = []
 
         isAll = True
+        isOneSelected = False
         for var in self.boolVars:
             if var.get():
+                isOneSelected = True
                 selectedList.append(item := ListService[ self.boolVars.index(var)])
                 messageStr += f"{item[0]:<{widthServiceName}}: {f'${item[1]:.2f}':>{widthServicePrice}}\n"
             else:
                 isAll = False
         self.buttonReset.config(text=self.txtReset if isAll else self.txtSelectAll)
+        self.buttonShowInfo.config(state=tk.NORMAL if isOneSelected else tk.DISABLED)
 
         print(f"{datetime.now()} selected services:\n{selectedList}, total: ${self.getSum():.2f}")
         self.labelName.config(text=f"Total Charges: ${self.getSum():.2f}")
